@@ -220,6 +220,7 @@ AutoConfigStreamPage::AutoConfigStreamPage(QWidget *parent)
 
 	ui->streamType->addItem(obs_service_get_display_name("rtmp_common"));
 	ui->streamType->addItem(obs_service_get_display_name("rtmp_custom"));
+	ui->streamType->addItem(obs_service_get_display_name("rtmp_streamshark"));
 
 	setTitle(QTStr("Basic.AutoConfig.StreamPage"));
 	setSubTitle(QTStr("Basic.AutoConfig.StreamPage.SubTitle"));
@@ -276,7 +277,7 @@ bool AutoConfigStreamPage::validatePage()
 	obs_data_release(service_settings);
 
 	wiz->customServer = ui->streamType->currentIndex() == 1;
-
+	//todo what
 	const char *serverType = wiz->customServer
 		? "rtmp_custom"
 		: "rtmp_common";
@@ -326,6 +327,8 @@ bool AutoConfigStreamPage::validatePage()
 			wiz->service = AutoConfig::Service::Twitch;
 		else if (wiz->serviceName == "Smashcast")
 			wiz->service = AutoConfig::Service::Smashcast;
+		else if (wiz->serviceName == "StreamShark")
+			wiz->service = AutoConfig::Service::StreamShark;
 		else
 			wiz->service = AutoConfig::Service::Other;
 	} else {

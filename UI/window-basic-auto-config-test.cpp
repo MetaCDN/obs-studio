@@ -182,6 +182,7 @@ void AutoConfigTestPage::TestBandwidthThread()
 	/* create obs objects                 */
 
 	const char *serverType = wiz->customServer
+		// TODO MOREWAT
 		? "rtmp_custom"
 		: "rtmp_common";
 
@@ -943,6 +944,7 @@ void AutoConfigTestPage::FinalizeResults()
 	};
 
 	if (wiz->type != AutoConfig::Type::Recording) {
+		// TODO: WHAT
 		const char *serverType = wiz->customServer
 			? "rtmp_custom"
 			: "rtmp_common";
